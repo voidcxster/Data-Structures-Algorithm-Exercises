@@ -1,4 +1,6 @@
-def merge_sort(arr, key: str, descending: bool = False):
+from typing import Any
+
+def merge_sort(arr: list[dict[str, Any]], key: str, descending: bool = False):
     if len(arr) <= 1:
         return
 
@@ -12,11 +14,13 @@ def merge_sort(arr, key: str, descending: bool = False):
 
     merge_two_sorted_lists(left, right, arr, key, descending)
 
-def merge_two_sorted_lists(a,b,arr, key: str, descending: bool = False):
-    len_a = len(a)
-    len_b = len(b)
+def merge_two_sorted_lists(a: list[dict[str, Any]], b: list[dict[str, Any]], arr: list[dict[str, Any]], key: str, descending: bool = False):
+    len_a: int = len(a)
+    len_b: int = len(b)
 
-    i = j = k = 0
+    i: int = 0
+    j: int = 0
+    k: int = 0
 
     while i < len_a and j < len_b:
         if descending:
@@ -46,13 +50,14 @@ def merge_two_sorted_lists(a,b,arr, key: str, descending: bool = False):
         k+=1
 
 if __name__ == '__main__':
-        arr = [
-            { 'name': 'vedanth',   'age': 17, 'time_hours': 1},
-            { 'name': 'rajab', 'age': 12,  'time_hours': 3},
-            { 'name': 'vignesh',  'age': 21,  'time_hours': 2.5},
-            { 'name': 'chinmay',  'age': 24,  'time_hours': 1.5},
-        ]
-        merge_sort(arr, 'time_hours', True)
-        print(arr)
-        merge_sort(arr, 'name')
-        print(arr)
+    arr: list[dict[str, Any]] = [
+        { 'name': 'vedanth',   'age': 17, 'time_hours': 1},
+        { 'name': 'rajab', 'age': 12,  'time_hours': 3},
+        { 'name': 'vignesh',  'age': 21,  'time_hours': 2.5},
+        { 'name': 'chinmay',  'age': 24,  'time_hours': 1.5},
+    ]
+
+    merge_sort(arr, 'time_hours', True)
+    print(arr)
+    merge_sort(arr, 'name')
+    print(arr)
